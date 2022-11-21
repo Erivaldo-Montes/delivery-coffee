@@ -5,7 +5,7 @@ export const HeaderContainer = styled.header`
   position: fixed;
   top: 0rem;
   z-index: 10;
-  padding: 2.0625rem 10rem;
+  padding: 2.0625rem 0;
   background: ${(props) => props.theme.background};
   flex-direction: row;
   & > div {
