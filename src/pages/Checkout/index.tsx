@@ -4,6 +4,7 @@ import { CoffeeContext } from '../../context/coffeeContext'
 import { HeaderContext } from '../../context/headerContext'
 import { CofeeCheckout } from './components/coffeeCheckout'
 import { DeliveryAddressForm } from './components/deliveryAddressForm'
+import { Navigate } from 'react-router-dom'
 import {
   CheckoutContainer,
   BillContainer,
@@ -44,6 +45,7 @@ export function Checkout() {
     useContext(CoffeeContext)
   const [paymentMethod, setPaymentMethod] = useState('')
   const [paymentMethodIsSelected, setPaymentMethodIsSelected] = useState(true)
+  const [deliveryIsOk, setDeliveryIsOk] = useState(false)
 
   const shipping = 9.99
 
@@ -51,7 +53,7 @@ export function Checkout() {
     resolver: zodResolver(deliveryAdreessFormValidationSchema),
   })
 
-  const { handleSubmit, reset } = deliveryAddressForm
+  const { handleSubmit } = deliveryAddressForm
 
   function handlePaymentMethodSelected(method: paymentTypes) {
     setPaymentMethod(method)
@@ -62,6 +64,7 @@ export function Checkout() {
       alert('Seu Carrinhos está vazio')
     } else if (paymentMethod && coffeesOrders.length > 0) {
       handleDeliveryCoffeeAdress(data, paymentMethod)
+      setDeliveryIsOk(true)
     } else if (!paymentMethod) {
       setPaymentMethodIsSelected(false)
     }
@@ -146,6 +149,7 @@ export function Checkout() {
             onClick={handleSubmit(handlecomfirmOrder)}
           >
             CONFIRMAR PEDIDO
+            {deliveryIsOk ? <Navigate to={'/success'} /> : null}
           </button>
         </BillContainer>
       </OrdersContainer>
