@@ -5,7 +5,7 @@ import React, {
   useReducer,
   useState,
 } from 'react'
-import { CoffeesOrder } from '../reducer/coffee/action'
+import { CoffeesOrder, resetOrdersAction } from '../reducer/coffee/action'
 
 import tradicionalEspresso from '../assets/coffeeTypes/traditional_express.svg'
 import americanExpress from '../assets/coffeeTypes/american_express.svg'
@@ -21,8 +21,12 @@ import cuban from '../assets/coffeeTypes/cuban.svg'
 import hawaiinan from '../assets/coffeeTypes/hawaiian.svg'
 import arabic from '../assets/coffeeTypes/arabic.svg'
 import irish from '../assets/coffeeTypes/irish.svg'
+
 import { coffeeReducer } from '../reducer/coffee/reducer'
-import { deliveryCoffeeReducer } from '../reducer/deliveryCoffee/reducer'
+import {
+  DeliveryCoffee,
+  deliveryCoffeeReducer,
+} from '../reducer/deliveryCoffee/reducer'
 import { completeOrderAction } from '../reducer/deliveryCoffee/action'
 
 enum tagsTypeEnum {
@@ -200,7 +204,7 @@ export interface Address {
   number: number
   complement?: string
   district: string
-  federal_unit: keyof typeof federalUnitsOption
+  federal_unit: string
 }
 
 interface CoffeeContextContext {
@@ -209,6 +213,7 @@ interface CoffeeContextContext {
   coffeesOrders: CoffeesOrder[]
   sumOfOrders: number
   federalUnitsOption: string[]
+  deliveryCoffee: DeliveryCoffee
   handleDeliveryCoffeeAdress: (address: Address, paymentMethod: string) => void
 }
 
@@ -247,6 +252,8 @@ export function CoffeeContextProvider({
         paymentMethod,
       }),
     )
+
+    coffeeOrderDispatch(resetOrdersAction())
   }
 
   console.log(deliveryCoffee)
@@ -259,6 +266,7 @@ export function CoffeeContextProvider({
         coffeesOrders,
         sumOfOrders,
         federalUnitsOption,
+        deliveryCoffee,
         handleDeliveryCoffeeAdress,
       }}
     >

@@ -10,6 +10,7 @@ export enum coffeeActionTypes {
   UPDATE_COFFEE_AMOUNT = 'UPDATE_COFFEE_AMOUNT',
   SUM_OF_ORDERS = 'SUM_OF_ORDERS',
   COMPLETE_ORDER = 'COMPLETE_ORDER',
+  RESET_ORDERS = 'RESET_ORDERS',
 }
 
 export function addNewCoffeeOrderAction(coffeeOrder: CoffeesOrder) {
@@ -36,5 +37,11 @@ export function removeOrderAction(id: string) {
     payload: {
       id,
     },
+  }
+}
+
+export function resetOrdersAction() {
+  return {
+    type: coffeeActionTypes.RESET_ORDERS,
   }
 }
