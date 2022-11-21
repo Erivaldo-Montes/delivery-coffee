@@ -53,7 +53,7 @@ export function DeliveryAddressForm() {
           />
           <InputDelivery
             type="text"
-            placeholder="Complemento                                                opcional"
+            placeholder="Complemento  (opcional)"
             id="complement"
             {...register('complment')}
             isInvalid={false}

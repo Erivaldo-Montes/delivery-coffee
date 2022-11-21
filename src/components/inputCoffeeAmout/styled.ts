@@ -26,4 +26,9 @@ export const InputCoffeeAmoutContainer = styled.div`
       box-shadow: none;
     }
   }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
 `

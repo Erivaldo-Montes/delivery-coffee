@@ -95,13 +95,14 @@ export const MethodPaymentButton = styled.button<MethodPaymentButtonProps>`
     }
   }};
 
-  border: ${(props) => {
-    if (props.selected) {
-      return '1px solid ' + props.theme.purple
-    } else {
-      return 'none'
-    }
-  }};
+  border: 1px solid
+    ${(props) => {
+      if (props.selected) {
+        return props.theme.purple
+      } else {
+        return 'transparent'
+      }
+    }};
 
   transition: 100ms background;
 

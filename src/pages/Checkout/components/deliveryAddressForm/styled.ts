@@ -59,6 +59,10 @@ export const DeliveryAddressFormContainer = styled.div`
       grid-area: city;
     }
 
+    input[type='number'] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
     grid-template-areas:
       'CEP . .'
       'street street street'

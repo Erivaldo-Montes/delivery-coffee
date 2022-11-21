@@ -19,15 +19,16 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.3;
     
     -webkit-font-smoothing: antialiased;
+
+    
+
+    input[type=number]::-webkit-inner-spin-button { 
+      -webkit-appearance: none;
+    }
+ 
   }
 
-  input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-    
-}
-input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
+ 
 
-}
+
 `
