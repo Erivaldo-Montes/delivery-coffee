@@ -16,12 +16,12 @@ export const CheckoutContainer = styled.div<CheckoutContainerProps>`
   display: grid;
   justify-content: space-between;
   grid-template-columns: 40rem 28rem;
-  width: 100%;
-  padding: 0 10rem;
+  width: 70rem;
+  margin: 0 auto;
   top: ${(props) => props.headerHeight + 'px'};
   gap: 2rem;
 
-  position: absolute;
+  position: relative;
   h3 {
     color: ${(props) => props.theme['base-subtitle']};
     font-size: 1.125rem;
