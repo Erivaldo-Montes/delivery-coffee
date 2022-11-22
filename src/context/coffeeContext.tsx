@@ -226,7 +226,21 @@ export const CoffeeContext = createContext({} as CoffeeContextContext)
 export function CoffeeContextProvider({
   children,
 }: CoffeeContextProviderProps) {
-  const [coffeesOrders, coffeeOrderDispatch] = useReducer(coffeeReducer, [])
+  const [coffeesOrders, coffeeOrderDispatch] = useReducer(
+    coffeeReducer,
+    [],
+    () => {
+      const coffeeOrdersStored = localStorage.getItem(
+        '@coffee-dilivery:shopping-cart-1.0.0',
+      )
+
+      if (coffeeOrdersStored) {
+        return JSON.parse(coffeeOrdersStored)
+      }
+
+      return []
+    },
+  )
   const [deliveryCoffee, deliveryCoffeeDispatch] = useReducer(
     deliveryCoffeeReducer,
     [],
@@ -239,6 +253,13 @@ export function CoffeeContextProvider({
     for (const order of coffeesOrders) {
       sum = order.price * order.amount + sum
     }
+
+    const CoffeeOrdersJson = JSON.stringify(coffeesOrders)
+
+    localStorage.setItem(
+      '@coffee-dilivery:shopping-cart-1.0.0',
+      CoffeeOrdersJson,
+    )
 
     setSumOfOrders(sum)
   }, [coffeesOrders])
@@ -255,8 +276,6 @@ export function CoffeeContextProvider({
 
     coffeeOrderDispatch(resetOrdersAction())
   }
-
-  console.log(deliveryCoffee)
 
   return (
     <CoffeeContext.Provider
