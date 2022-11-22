@@ -46,11 +46,9 @@ export function coffeeReducer(
     }
 
     case coffeeActionTypes.RESET_ORDERS: {
-      console.log('reset')
       return []
     }
     default:
-      console.log('default')
       return state
   }
 }
