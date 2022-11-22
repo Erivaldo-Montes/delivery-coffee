@@ -10,17 +10,15 @@ export function Header() {
 
   const coffeeOrdersLength = coffeesOrders.length
 
-  useEffect(() => {
-    const headerH = document.querySelector('main-header')
-  }, [])
-
   return (
     <HeaderContainer id="main-header">
       <div>
-        <img
-          src={logo}
-          alt="copo de cafe com as palavras 'coffee delivery' escrito na frente"
-        />
+        <NavLink to={'/'}>
+          <img
+            src={logo}
+            alt="copo de cafe com as palavras 'coffee delivery' escrito na frente"
+          />
+        </NavLink>
 
         <ActionContainer>
           <span>

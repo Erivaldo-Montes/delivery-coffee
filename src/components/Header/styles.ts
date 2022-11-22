@@ -13,6 +13,9 @@ export const HeaderContainer = styled.header`
     display: flex;
     width: 70rem;
     margin: 0 auto;
+    a:focus {
+      box-shadow: 0px 0px 0px transparent;
+    }
     img {
       height: 2.5rem;
       width: 5.3rem;
